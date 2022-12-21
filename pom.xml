@@ -13,7 +13,7 @@
 	<name>casa-da-vedacao</name>
 	<description>esse projeto mantém as entidades clientes e reparos</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>11</java.version>
 		<spring-doc.version>1.6.1</spring-doc.version>
 	</properties>
 	<dependencies>
