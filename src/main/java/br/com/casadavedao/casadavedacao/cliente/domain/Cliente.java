@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.com.casadavedao.casadavedacao.cliente.application.api.ClienteRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -49,18 +50,16 @@ public class Cliente {
 	private LocalDateTime datahoraDoCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
 	
-	public Cliente(UUID idCliente, @NotBlank String nomeCompleto, @NotBlank @Email String email,
-			@NotBlank String celular, String telefone, Sexo sexo, @NotNull LocalDate dataNascimento,
-			@NotBlank String rg, @CPF String cpf, Avaliacao avaliacao) {
-		this.idCliente = idCliente;
-		this.nomeCompleto = nomeCompleto;
-		this.email = email;
-		this.celular = celular;
-		this.telefone = telefone;
-		this.sexo = sexo;
-		this.dataNascimento = dataNascimento;
-		this.rg = rg;
-		this.cpf = cpf;
-		this.avaliacao = avaliacao;
+	public Cliente(ClienteRequest clienteRequest) {
+		this.nomeCompleto = clienteRequest.getNomeCompleto();
+		this.email = clienteRequest.getEmail();
+		this.celular = clienteRequest.getCelular();
+		this.telefone = clienteRequest.getTelefone();
+		this.sexo = clienteRequest.getSexo();
+		this.dataNascimento = clienteRequest.getDataNascimento();
+		this.rg = clienteRequest.getRg();
+		this.cpf = clienteRequest.getCpf();
+		this.avaliacao = clienteRequest.getAvaliacao();
+		this.datahoraDoCadastro = LocalDateTime.now();
 	}
 }
