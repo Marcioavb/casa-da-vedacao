@@ -1,5 +1,7 @@
 package br.com.casadavedao.casadavedacao.cliente.application.api;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.casadavedao.casadavedacao.cliente.application.service.ClienteService;
@@ -18,6 +20,13 @@ public class ClienteController implements ClienteAPI {
 		ClienteResponse clienteCriado = clienteService.criaCliente(clienteRequest);
 		log.info("[finaliza] ClienteController - PostCliente");
 		return clienteCriado;
+	}
+
+	@Override
+	public List<ClienteResponse> getTodosClientes() {
+		log.info("[inicio] ClienteController - getTodosClientes");
+		log.info("[termino] ClienteController - getTodosClientes");
+		return null;
 	}
 }
 
