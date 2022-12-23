@@ -1,6 +1,6 @@
 server:
  servlet:
-    context-path: /casa-da-vedacao/API/
+    context-path: /casa-da-vedacao/api/
     
 spring:
   datasource:
