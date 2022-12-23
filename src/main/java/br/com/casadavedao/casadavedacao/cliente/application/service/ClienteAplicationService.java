@@ -1,5 +1,7 @@
 package br.com.casadavedao.casadavedacao.cliente.application.service;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.casadavedao.casadavedacao.cliente.application.api.ClienteRequest;
@@ -23,6 +25,13 @@ public class ClienteAplicationService implements ClienteService {
 		return ClienteResponse.builder()
 				.idCliente(cliente.getIdCliente())
 				.build();
+	}
+
+	@Override
+	public List<ClienteResponse> buscaTodosClientes() {
+		log.info("[inicio] ClienteAplicationService - buscaTodosClientes");
+		log.info("[finaliza] ClienteAplicationService - buscaTodosClientes");
+		return null;
 	}
 }
 
