@@ -1,4 +1,4 @@
-package br.com.casadavedao.casadavedacao.cliente.application.repository;
+package br.com.casadavedao.casadavedacao.cliente.infra;
 
 import java.util.UUID;
 

@@ -1,9 +1,10 @@
 package br.com.casadavedao.casadavedacao.cliente.infra;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import br.com.casadavedao.casadavedacao.cliente.application.repository.ClienteRepository;
-import br.com.casadavedao.casadavedacao.cliente.application.repository.ClienteSpringDataJPARepository;
 import br.com.casadavedao.casadavedacao.cliente.domain.Cliente;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -20,6 +21,11 @@ public class ClienteInfraRepository implements ClienteRepository {
 		clienteSpringDataJPARepository.save(cliente);
 		log.info("[finaliza] ClienteInfraRepository - salva");
 		return cliente;
+	}
+
+	@Override
+	public List<Cliente> buscaTodosClientes() {
+		return null;
 	}
 }
 

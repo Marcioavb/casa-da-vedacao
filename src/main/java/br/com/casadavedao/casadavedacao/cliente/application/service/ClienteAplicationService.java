@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.casadavedao.casadavedacao.cliente.application.api.ClienteListResponse;
 import br.com.casadavedao.casadavedacao.cliente.application.api.ClienteRequest;
 import br.com.casadavedao.casadavedacao.cliente.application.api.ClienteResponse;
 import br.com.casadavedao.casadavedacao.cliente.application.repository.ClienteRepository;
@@ -28,10 +29,14 @@ public class ClienteAplicationService implements ClienteService {
 	}
 
 	@Override
-	public List<ClienteResponse> buscaTodosClientes() {
+	public List<ClienteListResponse> buscaTodosClientes() {
 		log.info("[inicio] ClienteAplicationService - buscaTodosClientes");
+		List<Cliente> clientes = clienteRepository.buscaTodosClientes();
 		log.info("[finaliza] ClienteAplicationService - buscaTodosClientes");
-		return null;
+		return ClienteListResponse.converte(clientes);
 	}
 }
+
+
+
 
