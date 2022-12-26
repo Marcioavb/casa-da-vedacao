@@ -75,7 +75,5 @@ public class Cliente {
 		this.cpf = clienteRequest.getCpf();
 		this.avaliacao = clienteRequest.getAvaliacao();
 		this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
-		
-		
 	}
 }
