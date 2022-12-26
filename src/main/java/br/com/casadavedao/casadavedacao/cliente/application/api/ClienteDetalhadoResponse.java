@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 import br.com.casadavedao.casadavedacao.cliente.domain.Avaliacao;
+import br.com.casadavedao.casadavedacao.cliente.domain.Cliente;
 import br.com.casadavedao.casadavedacao.cliente.domain.Sexo;
 import lombok.Value;
 
@@ -21,17 +22,17 @@ public class ClienteDetalhadoResponse {
 	private String cpf;
 	private Avaliacao avaliacao;
 	
-	public ClienteDetalhadoResponse(UUID idCliente, String nomeCompleto, String email, String celular, String telefone,
-			Sexo sexo, LocalDate dataNascimento, String rg, String cpf, Avaliacao avaliacao) {
-		this.idCliente = idCliente;
-		this.nomeCompleto = nomeCompleto;
-		this.email = email;
-		this.celular = celular;
-		this.telefone = telefone;
-		this.sexo = sexo;
-		this.dataNascimento = dataNascimento;
-		this.rg = rg;
-		this.cpf = cpf;
-		this.avaliacao = avaliacao;
+	public ClienteDetalhadoResponse(Cliente cliente) {
+		this.idCliente = cliente.getIdCliente();
+		this.nomeCompleto = cliente.getNomeCompleto();
+		this.email = cliente.getEmail();
+		this.celular = cliente.getCelular();
+		this.telefone = cliente.getTelefone();
+		this.sexo = cliente.getSexo();
+		this.dataNascimento = cliente.getDataNascimento();
+		this.rg = cliente.getCpf();
+		this.cpf = cliente.getCpf();
+		this.avaliacao = cliente.getAvaliacao();
 	}
 }
+

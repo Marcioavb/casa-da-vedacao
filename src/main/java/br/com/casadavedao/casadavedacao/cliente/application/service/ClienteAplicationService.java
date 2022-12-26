@@ -1,14 +1,17 @@
 package br.com.casadavedao.casadavedacao.cliente.application.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.casadavedao.casadavedacao.cliente.application.api.ClienteDetalhadoResponse;
 import br.com.casadavedao.casadavedacao.cliente.application.api.ClienteListResponse;
 import br.com.casadavedao.casadavedacao.cliente.application.api.ClienteRequest;
 import br.com.casadavedao.casadavedacao.cliente.application.api.ClienteResponse;
 import br.com.casadavedao.casadavedacao.cliente.application.repository.ClienteRepository;
 import br.com.casadavedao.casadavedacao.cliente.domain.Cliente;
+import ch.qos.logback.core.net.server.Client;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -34,6 +37,14 @@ public class ClienteAplicationService implements ClienteService {
 		List<Cliente> clientes = clienteRepository.buscaTodosClientes();
 		log.info("[finaliza] ClienteAplicationService - buscaTodosClientes");
 		return ClienteListResponse.converte(clientes);
+	}
+
+	@Override
+	public ClienteDetalhadoResponse buscaClienteAtravesId(UUID idCliente) {
+		log.info("[inicio] ClienteAplicationService - buscaClienteAtravesId");
+		Cliente cliente = clienteRepository.buscaClienteAtravesId(idCliente);
+		log.info("[finaliza] ClienteAplicationService - buscaClienteAtravesId");
+		return new ClienteDetalhadoResponse(cliente);
 	}
 }
 

@@ -1,11 +1,14 @@
 package br.com.casadavedao.casadavedacao.cliente.infra;
 
 import java.util.List;
+import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import br.com.casadavedao.casadavedacao.cliente.application.repository.ClienteRepository;
 import br.com.casadavedao.casadavedacao.cliente.domain.Cliente;
+import br.com.casadavedao.casadavedacao.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -27,8 +30,17 @@ public class ClienteInfraRepository implements ClienteRepository {
 	public List<Cliente> buscaTodosClientes() {
 		log.info("[inicio] ClienteInfraRepository - buscaTodosClientes");
 		List<Cliente> todosCliente = clienteSpringDataJPARepository.findAll();
-		log.info("[termino] ClienteInfraRepository - buscaTodosClientes");
+		log.info("[finaliza] ClienteInfraRepository - buscaTodosClientes");
 		return todosCliente;
+	}
+
+	@Override
+	public Cliente buscaClienteAtravesId(UUID idCliente) {
+		log.info("[inicio] ClienteInfraRepository - buscaClienteAtravesId");
+		Cliente cliente = clienteSpringDataJPARepository.findById(idCliente)
+				.orElseThrow(()-> APIException.build(HttpStatus.NOT_FOUND, "Cliente Nao Encontrado"));
+		log.info("[finaliza] ClienteInfraRepository - buscaClienteAtravesId");
+		return cliente;
 	}
 }
 
