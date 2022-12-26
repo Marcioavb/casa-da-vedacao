@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.casadavedao.casadavedacao.cliente.application.api.ClienteAlteradoRequest;
 import br.com.casadavedao.casadavedacao.cliente.application.api.ClienteDetalhadoResponse;
 import br.com.casadavedao.casadavedacao.cliente.application.api.ClienteListResponse;
 import br.com.casadavedao.casadavedacao.cliente.application.api.ClienteRequest;
@@ -12,6 +13,7 @@ import br.com.casadavedao.casadavedacao.cliente.application.api.ClienteResponse;
 import br.com.casadavedao.casadavedacao.cliente.application.repository.ClienteRepository;
 import br.com.casadavedao.casadavedacao.cliente.domain.Cliente;
 import ch.qos.logback.core.net.server.Client;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -53,6 +55,13 @@ public class ClienteAplicationService implements ClienteService {
 		Cliente cliente = clienteRepository.buscaClienteAtravesId(idCliente);
 		clienteRepository.deletaCliente(cliente);
 		log.info("[finaliza] ClienteAplicationService - deletaClienteAtravesId");
+	}
+
+	@Override
+	public void pathAlteraCliente(UUID idCliente, ClienteAlteradoRequest clienteAlteradoRequest) {
+		log.info("[inicio] ClienteAplicationService - pathAlteraCliente");
+		Cliente cliente = clienteRepository.buscaClienteAtravesId(idCliente);
+		log.info("[finaliza] ClienteAplicationService - pathAlteraCliente");
 	}
 }
 
