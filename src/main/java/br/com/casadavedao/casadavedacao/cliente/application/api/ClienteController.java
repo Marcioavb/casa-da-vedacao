@@ -1,6 +1,7 @@
 package br.com.casadavedao.casadavedacao.cliente.application.api;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +29,14 @@ public class ClienteController implements ClienteAPI {
 		List<ClienteListResponse> clientes = clienteService.buscaTodosClientes();
 		log.info("[termino] ClienteController - getTodosClientes");
 		return clientes;
+	}
+
+	@Override
+	public ClienteDetalhadoResponse getClienteAtravesDoId(UUID idCliente) {
+		log.info("[inicio] ClienteController - getClienteAtravesDoId");
+		log.info("[idCliente] {}", idCliente);
+		log.info("[termino] ClienteController - getClienteAtravesDoId");
+		return null;
 	}
 }
 
